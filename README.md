@@ -1,2 +1,2 @@
-# image_prep
-Image Preprocessing
+# SSCV
+Smart Structures & Systems Lab Computer Vision Tools 
