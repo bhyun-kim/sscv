@@ -7,13 +7,9 @@ from tqdm import tqdm
 
 from datetime import datetime
 
-import numpy as np
-
-
-import cv2 
 import slidingwindow as sw
 
-import pathlib
+from utils import imwrite, imread
 
 
 parser = argparse.ArgumentParser()
@@ -66,22 +62,6 @@ def main():
                 file_store_path = file_store_path.replace(f'.{source_ext}', f'_{x_start}_{y_start}_{crop_size}.{store_ext}')
             
             imwrite(file_store_path, subset)
-
-
-
-def imread(path):
-    
-    stream = open(path, "rb")
-    bytes = bytearray(stream.read())
-    nparray = np.asarray(bytes, dtype=np.uint8)
-    bgrImage = cv2.imdecode(nparray, cv2.IMREAD_UNCHANGED)
-
-    return bgrImage
-
-
-def imwrite(path, image):
-    _, ext = os.path.splitext(path)
-    cv2.imencode(ext, image)[1].tofile(path)
 
 
 
